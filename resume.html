@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Resume</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #fffdfd;
+            color: #000000;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2rem;
+            color: #000000;
+            margin-bottom: 20px;
+        }
+
+        .resume-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: #eb8705;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: #ff9307;
+            margin-top: 5px;
+        }
+
+        .entry {
+            margin-bottom: 20px;
+            padding: 10px;
+            border-left: 3px solid #ff07b5;
+        }
+
+        .entry-title {
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: #000000;
+        }
+
+        .entry span {
+            font-size: 0.95rem;
+            color: #1070dd;
+        }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.3rem;
+            }
+
+            .entry {
+                padding-left: 5px;
+                border-left-width: 2px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Resume</h1>
+    <div class="resume-section">
+        <!-- Education Section -->
+        <div class="section-title">Education</div>
+        <div class="entry">
+            <div class="entry-title">Chandigarh University</div>
+            <span>Aug 2022 - Present</span><br>
+            Bachelor of Engineering in Electronics and Communication Engineering.
+        </div>
+        <div class="entry">
+            <div class="entry-title">Loyola Secondary School</div>
+            <span>February 2017 - Mar 2021</span><br>
+            General Sciences| Mathematics, Physics, Chemistry, and Biology.
+        </div>
+        <div class="entry">
+            <div class="entry-title">Auxilium Basic Education School</div>
+            <span>April 2010 - Dec 2016</span><br>
+            Primary School Education.
+        </div>
+
+        <!-- Skills & Experience Section -->
+        <div class="section-title">Skills and Experience</div>
+        <div class="entry">
+            <div class="entry-title">Embedded Systems and IoT</div>
+            <ul>
+                <li>Hands-on experience with Arduino and Raspberry Pi interfacing.</li>
+                <li>Familiar with Microcontroller boards like ESP32,ESP8266,Raspberry Pi Pico,Arduino .</li>
+                <li>Worked with wireless technologies like LoRa and ESP32 MCUs.</li>
+                <li>Experience with cloud servers such as ThingSpeak, ESP RainMaker, and Blynk IoT.</li>
+                <li>Familiar with buiding Connected devices and integrating them with coud platforms.</li>
+            </ul>
+
+            <div class="entry-title">App Development</div>
+            <ul>
+                <li>Experienced in building apps with React Native and Expo Router.</li>
+                <li>Worked on developing a budget tracker app with Firebase authentication and Async local storage.</li>
+                <li>Knowledge of UI components like Expo Vector Icons and Picker.</li>
+            </ul>
+
+            <div class="entry-title">Programming Languages</div>
+            <ul>
+                <li>Good Understanding of C, C++, Python, JavaScript, and Java.</li>
+            </ul>
+
+            <div class="entry-title">UI Design</div>
+            <ul>
+                <li>Experience with Figma for designing user interfaces.</li>
+                <li>Knowledge of UI/UX principles and design thinking.</li>
+            </ul>
+
+            <h2>Personal Interests</h2>
+            <p>I enjoy solving problems through technology and creating tools that make daily life easier.
+             I am also passionate about learning new technologies and sharing my knowledge with others.
+            </p>
+            <h2>Goals</h2>
+        <p>My goal is to continuously improve my skills in app development, IoT, and embedded systems, with an emphasis
+            on system design and architecture. I also aim to develop apps that address real-world issues and contribute
+            to the tech community.</p>
+        </div>
+    </div>
+    
+</body>
+
+</html>

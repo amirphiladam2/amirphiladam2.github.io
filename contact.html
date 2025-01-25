@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Amir P.Adam</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Include Font Awesome for social media icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Reset some default styles */
+        body,
+        h2,
+        p,
+        ul,
+        li,
+        a,
+        input,
+        textarea,
+        button {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Set up basic layout */
+        body {
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+
+        .profile-pic {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+            border: 2px solid #fff;
+        }
+
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-right: 20px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #f39c12;
+        }
+
+        /* Social Icons Styling */
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            gap: 20px;
+        }
+
+        .social-icons a {
+            color: #333;
+            font-size: 40px;
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #f39c12;
+            transform: scale(1.1);
+        }
+
+        main {
+            padding: 50px 20px;
+        }
+
+        .section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 32px;
+            color: #333;
+        }
+        
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <img src="images/profile.jpg" alt="Profile Picture" class="profile-pic">
+                <span>Amir P.Adam</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="contact" class="section contact">
+            <div class="container">
+                <h2>Contact Me</h2>
+
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/in/amir-philip-29872524b/" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://github.com/amirphiladam2" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://twitter.com/amirphiladam" aria-label="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <!-- Added email icon -->
+                    <a href="mailto:amirphiladam@gmail.com" aria-label="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <!-- Added Facebook icon -->
+                    <a href="https://www.facebook.com/amirphiladam" aria-label="Facebook">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <!-- Added Threads icon (using Instagram as placeholder for now) -->
+                    <a href="https://www.threads.net/tech_nerd211" aria-label="Threads">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <!-- Added website link -->
+                    <a href="https://techtacklenerd.blogspot.com/" aria-label="Website">
+                        <i class="fas fa-globe"></i>
+                    </a>
+                    <!-- Added Instagram icon-->
+                    <a href="https://www.instagram.com/amirp_2808" aria-label="Threads">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Amir P.Adam. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
