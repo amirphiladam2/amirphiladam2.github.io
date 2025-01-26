@@ -48,36 +48,45 @@
                     <a href="resume.html" class="btn">Resume</a>
                     <a href="#">Patents</a>
                     <a href="#">Research Papers</a>
-                    
                 </div>
                 <div class="portfolio-grid">
-                    <div class="portfolio-item">
+                    <!-- Card 1 -->
+                    <a href="https://techtacklenerd.blogspot.com/p/privacypolicy.html"
+                        target="_blank" class="portfolio-item">
                         <img src="images/Budget Tracker App UI.png" alt="Budget Tracker App" loading="lazy">
                         <h3>Budget Tracker App</h3>
                         <p>Projects</p>
-                    </div>
-                    <div class="portfolio-item">
+                    </a>
+                    <!-- Card 2 -->
+                    <a href="https://techtacklenerd.blogspot.com/2023/07/led-control-using-alexa-and-google-home.html"
+                        target="_blank" class="portfolio-item">
                         <img src="images/alexagoogle.jpeg" alt="Home Automation" loading="lazy">
                         <h3>Home Automation With Google And Alexa Controllers</h3>
                         <p>Projects</p>
-                    </div>
-                    <div class="portfolio-item">
+                    </a>
+                    <!-- Card 3 -->
+                    <a href="https://github.com/amirphiladam2/IoT-Weather-Monitoring-System" target="_blank"
+                        class="portfolio-item">
                         <img src="images/iot.jpeg" alt="IoT Weather Monitoring System" loading="lazy">
                         <h3>IoT Weather Monitoring System</h3>
                         <p>Projects</p>
-                    </div>
-                    <div class="portfolio-item">
+                    </a>
+                    <!-- Card 4 -->
+                    <a href="https://techtacklenerd.blogspot.com/2024/10/introduction-in-this-project-ill-show.html" target="_blank" class="portfolio-item">
                         <img src="images/wireless.jpg" alt="Wireless Sensor Network" loading="lazy">
                         <h3>Wireless Sensor Network</h3>
                         <p>Projects</p>
-                    </div>
-                   
-                    <div class="portfolio-item">
+                    </a>
+                    <!-- Card 5 -->
+                    <a href="https://techtacklenerd.blogspot.com/2024/10/home-automation-project-using-esp32-and.html" target="_blank" class="portfolio-item">
                         <img src="images/smarthome.jpg" alt="Home Automation" loading="lazy">
                         <h3>Home Automation With Pyserial</h3>
                         <p>Projects</p>
-                    </div>
+                    </a>
+                </div>
             </div>
+        </section>
+    </main>
         </section>
     </main>
 
@@ -244,6 +253,11 @@
             overflow: hidden;
             transition: transform 0.3s, box-shadow 0.3s;
         }
+          .portfolio-item {
+           display: block; /* Makes the entire card clickable */
+           text-decoration: none; /* Removes underline on links */
+           color: inherit; /* Ensures text color matches the design */
+       }
 
         .portfolio-item:hover {
             transform: translateY(-5px);
