@@ -4,21 +4,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amir P.Adam</title>
+    <title>Amir P.Adam - Professional Portfolio</title>
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Poppins:wght@400;600&display=swap"
+        rel="stylesheet">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" 
-          integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM5K8p1rRxpzt1f6x5pbb6z9gq5t5p5t5p5t5p5t5" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        /* CSS Variables */
+        :root {
+            --primary-color: #e99517;
+            --secondary-color: #df8c0f;
+            --dark-color: #01050e;
+            --light-color: #f9f9f9;
+            --text-color: #111;
+            --font-primary: 'Roboto', sans-serif;
+            --font-secondary: 'Poppins', sans-serif;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
         /* General Styles */
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: var(--font-primary);
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            color: #111;
+            color: var(--text-color);
             line-height: 1.6;
+            background-color: var(--light-color);
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: var(--font-secondary);
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
         }
 
         .container {
@@ -29,10 +56,10 @@
 
         /* Header Section */
         .header {
-            background-color: #000;
+            background-color: var(--dark-color);
             color: #fff;
             padding: 1rem 0;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -49,11 +76,11 @@
             align-items: center;
             font-size: 1.5rem;
             font-weight: 800;
+            transition: var(--transition);
         }
 
         .logo:hover {
-            color: #da7605;
-            transition: color 0.3s;
+            color: var(--primary-color);
         }
 
         .profile-pic {
@@ -73,15 +100,14 @@
         }
 
         .nav-links a {
-            text-decoration: none;
             color: #fff;
             font-weight: 500;
             position: relative;
-            transition: color 0.3s;
+            transition: var(--transition);
         }
 
         .nav-links a:hover {
-            color: #da7605;
+            color: var(--primary-color);
         }
 
         .nav-links a::after {
@@ -89,10 +115,10 @@
             position: absolute;
             width: 0;
             height: 2px;
-            background-color: #da7605;
+            background-color: var(--primary-color);
             bottom: -5px;
             left: 0;
-            transition: width 0.3s ease;
+            transition: var(--transition);
         }
 
         .nav-links a:hover::after {
@@ -107,30 +133,30 @@
         .social-icons a {
             color: #fff;
             font-size: 1.2rem;
-            transition: color 0.3s;
+            transition: var(--transition);
         }
 
         .social-icons a:hover {
-            color: #df8c0f;
+            color: var(--primary-color);
         }
 
         /* Home Section */
         .home {
-            background: linear-gradient(to bottom right, #21264b, #28305a), 
+            background: linear-gradient(to bottom right, #21264b, #28305a),
                 url('https://via.placeholder.com/1200x600') no-repeat center center/cover;
             color: #fff;
             text-align: center;
-            padding: 6rem 1rem;
+            padding: 8rem 1rem;
         }
 
         .home h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 1rem;
             animation: fadeInDown 1s ease-in-out;
         }
 
         .home p {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             margin-bottom: 2rem;
             opacity: 0.9;
         }
@@ -138,48 +164,47 @@
         .btn {
             display: inline-block;
             padding: 0.8rem 2rem;
-            background-color: #e99517;
+            background-color: var(--primary-color);
             color: #fff;
-            text-decoration: none;
             border-radius: 25px;
             font-weight: bold;
-            transition: background-color 0.3s, transform 0.3s;
+            transition: var(--transition);
         }
 
         .btn:hover {
-            background-color: #df8c0f;
+            background-color: var(--secondary-color);
             transform: scale(1.05);
         }
 
         /* Portfolio Section */
         .portfolio {
-            background-color: #f9f9f9;
-            padding: 3rem 0;
+            background-color: var(--light-color);
+            padding: 4rem 0;
         }
 
         .portfolio h2 {
             text-align: center;
-            font-size: 2rem;
+            font-size: 2.5rem;
             margin-bottom: 2rem;
         }
 
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
+            gap: 2rem;
         }
 
         .portfolio-item {
             background: #fff;
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow);
             overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: var(--transition);
         }
 
         .portfolio-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
 
         .portfolio-item img {
@@ -189,7 +214,7 @@
         }
 
         .portfolio-item h3 {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             margin: 1rem;
         }
 
@@ -197,18 +222,13 @@
             color: #555;
             margin: 0 1rem 1rem;
         }
-        .portfolio-item {
-        display: block; /* Ensures the entire card is clickable */
-        text-decoration: none; /* Removes underline from the links */
-        color: inherit; /* Keeps the text color consistent */
-        }
 
         /* Footer Section */
         .footer {
-            background-color: #01050e;
+            background-color: var(--dark-color);
             color: #fff;
             text-align: center;
-            padding: 1.5rem 0;
+            padding: 2rem 0;
             font-size: 0.9rem;
         }
 
@@ -243,7 +263,7 @@
             }
 
             .home h1 {
-                font-size: 2.2rem;
+                font-size: 2.5rem;
             }
 
             .home p {
@@ -268,9 +288,11 @@
                 <li><a href="contact.html">Contact</a></li>
             </ul>
             <div class="social-icons">
-                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/in/amir-philip-29872524b/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/amirphiladam2/" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://x.com/amirphiladam" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/amirp_2808/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/amirphiladam/" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
             </div>
         </nav>
     </header>
@@ -282,45 +304,46 @@
             <div class="container">
                 <h1>Welcome to My Professional Portfolio</h1>
                 <p>Showcasing my work, skills, and projects that I am passionate about.</p>
-                <a href="portfolio.html" class="btn">Explore</a>
+                <a href="portfolio.html" class="btn">Explore My Work</a>
             </div>
         </section>
 
-    <section id="portfolio" class="section portfolio">
-        <div class="container">
-            <h2>Highlights</h2>
-            <div class="portfolio-grid">
-                <!-- Card 1 -->
-                <a href="https://techtacklenerd.blogspot.com/2023/07/led-control-using-alexa-and-google-home.html"
-                    target="_blank" class="portfolio-item">
-                    <img src="images/alexagoogle.jpeg" alt="Home Automation" loading="lazy">
-                    <h3>Home Automation With Google And Alexa Controllers</h3>
-                    <p>Projects</p>
-                </a>
-                <!-- Card 2 -->
-                <a href="https://github.com/amirphiladam2/IoT-Weather-Monitoring-System" target="_blank"
-                    class="portfolio-item">
-                    <img src="images/iot.jpeg" alt="IoT Weather Monitoring System" loading="lazy">
-                    <h3>IoT Weather Monitoring System</h3>
-                    <p>Projects</p>
-                </a>
-                <!-- Card 3 -->
-                <a href="https://techtacklenerd.blogspot.com/p/privacypolicy.html"
-                    target="_blank" class="portfolio-item">
-                    <img src="images/Budget Tracker App UI.png" alt="Budget Tracker App" loading="lazy">
-                    <h3>Budget Tracker App</h3>
-                    <p>Projects</p>
-                </a>
-                <!-- Card 4 -->
-                <a href="https://techtacklenerd.blogspot.com/2024/10/introduction-in-this-project-ill-show.html" target="_blank" class="portfolio-item">
-                    <img src="images/wireless.jpg" alt="Wireless Sensor Network" loading="lazy">
-                    <h3>Wireless Sensor Network</h3>
-                    <p>Projects</p>
-                </a>
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="portfolio">
+            <div class="container">
+                <h2>Highlights</h2>
+                <div class="portfolio-grid">
+                    <!-- Card 1 -->
+                    <a href="https://techtacklenerd.blogspot.com/2023/07/led-control-using-alexa-and-google-home.html"
+                        target="_blank" class="portfolio-item">
+                        <img src="images/alexagoogle.jpeg" alt="Home Automation" loading="lazy">
+                        <h3>Home Automation With Google And Alexa Controllers</h3>
+                        <p>Projects</p>
+                    </a>
+                    <!-- Card 2 -->
+                    <a href="https://github.com/amirphiladam2/IoT-Weather-Monitoring-System" target="_blank"
+                        class="portfolio-item">
+                        <img src="images/iot.jpeg" alt="IoT Weather Monitoring System" loading="lazy">
+                        <h3>IoT Weather Monitoring System</h3>
+                        <p>Projects</p>
+                    </a>
+                    <!-- Card 3 -->
+                    <a href="https://techtacklenerd.blogspot.com/p/privacypolicy.html" target="_blank"
+                        class="portfolio-item">
+                        <img src="images/Budget Tracker App UI.png" alt="Budget Tracker App" loading="lazy">
+                        <h3>Budget Tracker App</h3>
+                        <p>Projects</p>
+                    </a>
+                    <!-- Card 4 -->
+                    <a href="https://techtacklenerd.blogspot.com/2024/10/introduction-in-this-project-ill-show.html"
+                        target="_blank" class="portfolio-item">
+                        <img src="images/wireless.jpg" alt="Wireless Sensor Network" loading="lazy">
+                        <h3>Wireless Sensor Network</h3>
+                        <p>Projects</p>
+                    </a>
+                </div>
             </div>
-        </div>
-    </section>
-
+        </section>
     </main>
 
     <!-- Footer Section -->
