@@ -15,10 +15,11 @@
         /* CSS Variables */
         :root {
             --primary-color: #e99517;
-            --secondary-color: #df8c0f;
+            --secondary-color: #564dd1;
             --dark-color: #01050e;
+            --green-color: #850765;
             --light-color: #f9f9f9;
-            --text-color: #333333;
+            --text-color: #111;
             --font-primary: 'Roboto', sans-serif;
             --font-secondary: 'Poppins', sans-serif;
             --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -27,17 +28,31 @@
 
         /* General Styles */
         body {
-            margin: 0;
             font-family: var(--font-primary);
-            background-color: var(--light-color);
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
             color: var(--text-color);
             line-height: 1.6;
+            background-color: var(--light-color);
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: var(--font-secondary);
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
         }
 
         .container {
+            width: 90%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
         }
 
         /* Header Section */
@@ -51,31 +66,26 @@
             z-index: 1000;
         }
 
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
         .logo {
-            display: flex;
-            align-items: center;
-            font-size: 1.5rem;
-            font-weight: 800;
+            height: 60px;
+            width: auto;
+            display: block;
             transition: var(--transition);
         }
 
         .logo:hover {
-            color: var(--primary-color);
+            transform: scale(1.05);
         }
 
-        .profile-pic {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            margin-right: 10px;
-            border: 2px solid #fff;
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .nav-links {
@@ -87,7 +97,6 @@
         }
 
         .nav-links a {
-            text-decoration: none;
             color: #fff;
             font-weight: 500;
             position: relative;
@@ -111,6 +120,21 @@
 
         .nav-links a:hover::after {
             width: 100%;
+        }
+
+        .social-icons1 {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-icons1 a {
+            color: #fff;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-icons1 a:hover {
+            color: var(--primary-color);
         }
 
         /* Main Content */
@@ -194,21 +218,29 @@
 </head>
 
 <body>
-    <!-- Header Section -->
-    <header class="header">
-        <nav class="navbar container">
-            <div class="logo">
-                <img src="images/profile.jpg" alt="Profile Picture" class="profile-pic">
-                <span>Amir P.Adam</span>
-            </div>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+<!-- Header Section -->
+<header class="header">
+    <nav class="navbar container">
+        <div class="logo-container">
+            <img src="images/mylogo2.png" alt="AmirDevStudio" class="logo" />
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="social-icons1">
+            <a href="https://www.linkedin.com/in/amir-philip-29872524b/" aria-label="LinkedIn"><i
+                    class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/amirphiladam2/" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://x.com/amirphiladam" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/amirp_2808/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/amirphiladam/" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+        </div>
+    </nav>
+</header>
 
     <!-- Main Content -->
     <main>
@@ -231,13 +263,13 @@
                     <a href="https://www.facebook.com/amirphiladam" aria-label="Facebook">
                         <i class="fab fa-facebook"></i>
                     </a>
-                    <a href="https://www.threads.net/tech_nerd211" aria-label="Threads">
+                    <a href="https://www.threads.net/amirdev_studio" aria-label="Threads">
                         <i class="fab fa-instagram"></i>
                     </a>
                     <a href="https://techtacklenerd.blogspot.com/" aria-label="Website">
                         <i class="fas fa-globe"></i>
                     </a>
-                    <a href="https://www.instagram.com/amirp_2808" aria-label="Instagram">
+                    <a href="https://www.instagram.com/amirdev_studio" aria-label="Instagram">
                         <i class="fab fa-instagram"></i>
                     </a>
                 </div>

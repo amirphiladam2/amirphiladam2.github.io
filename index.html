@@ -5,18 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amir P.Adam - Professional Portfolio</title>
+    <meta name="description" content="Professional portfolio of Amir P.Adam showcasing skills, projects, and services.">
+    <meta name="keywords" content="portfolio, web development, mobile apps, IoT projects, Amir P.Adam">
+    <meta name="author" content="Amir P.Adam">
     <!-- Google Fonts -->
     <link
         href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Poppins:wght@400;600&display=swap"
         rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
     <style>
         /* CSS Variables */
         :root {
             --primary-color: #e99517;
-            --secondary-color: #df8c0f;
+            --secondary-color: #564dd1;
             --dark-color: #01050e;
+            --green-color: #850765;
             --light-color: #f9f9f9;
             --text-color: #111;
             --font-primary: 'Roboto', sans-serif;
@@ -65,30 +71,26 @@
             z-index: 1000;
         }
 
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
         .logo {
-            display: flex;
-            align-items: center;
-            font-size: 1.5rem;
-            font-weight: 800;
+            height: 60px;
+            width: auto;
+            display: block;
             transition: var(--transition);
         }
 
         .logo:hover {
-            color: var(--primary-color);
+            transform: scale(1.05);
         }
 
-        .profile-pic {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            margin-right: 10px;
-            border: 2px solid #fff;
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .nav-links {
@@ -141,28 +143,59 @@
         }
 
         /* Home Section */
-        .home {
-            background: linear-gradient(to bottom right, #21264b, #28305a),
-                url('https://via.placeholder.com/1200x600') no-repeat center center/cover;
-            color: #fff;
+        .slider-wrapper {
+            position: relative;
+            max-width: 100%;
+            margin: 0 auto;
+            height: 450px;
+            /* Fixed height for the slider */
+            overflow: hidden;
+        }
+
+        .slider {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .slider img {
+            flex: 1 0 100%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .slider img.active {
+            opacity: 1;
+        }
+
+        .slider-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             text-align: center;
-            padding: 8rem 1rem;
+            color: #fff;
+            z-index: 2;
         }
 
-        .home h1 {
-            font-size: 3.5rem;
+        .slider-content h1 {
+            font-size: 3rem;
             margin-bottom: 1rem;
-            animation: fadeInDown 1s ease-in-out;
         }
 
-        .home p {
-            font-size: 1.25rem;
+        .slider-content p {
+            font-size: 1.5rem;
             margin-bottom: 2rem;
-            opacity: 0.9;
         }
 
-        .btn {
-            display: inline-block;
+        .slider-content .btn {
             padding: 0.8rem 2rem;
             background-color: var(--primary-color);
             color: #fff;
@@ -171,10 +204,50 @@
             transition: var(--transition);
         }
 
-        .btn:hover {
+        .slider-content .btn:hover {
             background-color: var(--secondary-color);
             transform: scale(1.05);
         }
+
+        .slider-nav {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 2;
+        }
+
+        .slider-nav .dot {
+            width: 10px;
+            height: 10px;
+            background-color: #fff;
+            border-radius: 50%;
+            opacity: 0.5;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .slider-nav .dot.active {
+            opacity: 1;
+        }
+
+        .slider::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgb(40, 35, 110), rgba(61, 20, 211, 0.616), rgba(0, 0, 0, 0.616));
+            z-index: 1;
+        }
+
+        .slider-nav .dot:hover {
+            opacity: 1;
+        }
+
 
         /* Portfolio Section */
         .portfolio {
@@ -200,6 +273,9 @@
             box-shadow: var(--shadow);
             overflow: hidden;
             transition: var(--transition);
+            position: relative;
+            padding: 2px;
+            /* Add padding to make space for the animated border */
         }
 
         .portfolio-item:hover {
@@ -223,17 +299,209 @@
             margin: 0 1rem 1rem;
         }
 
+        /* Animated Border for Portfolio Items */
+        .portfolio-item::before {
+            content: "";
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ff0000, #ff7300, #ffeb00, #00ff00, #007bff, #8a2be2, #ff00ff);
+            background-size: 300% 300%;
+            border-radius: 12px;
+            z-index: -1;
+            animation: animateBorder 4s linear infinite;
+        }
+
+        .portfolio-item::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #fff;
+            border-radius: 10px;
+            z-index: -1;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 4rem 0;
+            background-color: var(--light-color);
+        }
+
+        .services h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+
+        .services p {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #555;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 2fr));
+            gap: 2rem;
+            padding: 0 1rem;
+        }
+
+        /* Service Card Styles */
+       .service-card {
+          display: flex;
+          flex-direction: column;
+          align-items: center; /* Center content horizontally */
+          justify-content: center; /* Center content vertically */
+          background: #fff;
+          border-radius: 10px;
+          box-shadow: var(--shadow);
+          padding: 2rem;
+          text-align: center;
+          transition: var(--transition);
+          position: relative;
+          padding: 3px;
+       /* Add padding to make space for the animated border */
+      }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-card i {
+          font-size: 2.5rem;
+          color: var(--secondary-color);
+          margin-bottom: 1rem; /* Adjust margin to control spacing */
+         /* Additional styles for positioning */
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         width: 100%;
+         height: 100px;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+
+        .service-card p {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        /* Animated Border for Service Cards */
+        .service-card::before {
+            content: "";
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ff0000, #ff7300, #ffeb00, #00ff00, #007bff, #8a2be2, #ff00ff);
+            background-size: 300% 300%;
+            border-radius: 12px;
+            z-index: -1;
+            animation: animateBorder 4s linear infinite;
+        }
+
+        .service-card::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #fff;
+            border-radius: 10px;
+            z-index: -1;
+        }
+
+        /* Keyframes for Animated Border */
+        @keyframes animateBorder {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
         /* Footer Section */
         .footer {
             background-color: var(--dark-color);
             color: #fff;
-            text-align: center;
-            padding: 2rem 0;
-            font-size: 0.9rem;
+            padding: 4rem 0;
         }
 
-        .footer p {
-            margin: 0;
+        .footer .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: rem;
+        }
+
+        .footer img {
+            width: 100px;
+            margin-bottom: 1rem;
+        }
+
+        .footer h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer ul li a {
+            color: #ccc;
+            transition: var(--transition);
+        }
+
+        .footer ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer .social-icons a {
+            color: #ccc;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .footer .social-icons a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer .copyright {
+            text-align: center;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #333;
+            color: #ccc;
         }
 
         /* Animations */
@@ -269,6 +537,10 @@
             .home p {
                 font-size: 1rem;
             }
+
+            .logo {
+                height: 50px;
+            }
         }
     </style>
 </head>
@@ -277,10 +549,10 @@
     <!-- Header Section -->
     <header class="header">
         <nav class="navbar container">
-            <div class="logo">
-                <img src="images/profile.jpg" alt="Profile Picture" class="profile-pic">
-                <span>Amir P.Adam</span>
+            <div class="logo-container">
+                <img src="images/mylogo2.png" alt="AmirDevStudio" class="logo" />
             </div>
+
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="portfolio.html">Portfolio</a></li>
@@ -288,11 +560,14 @@
                 <li><a href="contact.html">Contact</a></li>
             </ul>
             <div class="social-icons">
-                <a href="https://www.linkedin.com/in/amir-philip-29872524b/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.linkedin.com/in/amir-philip-29872524b/" aria-label="LinkedIn"><i
+                        class="fab fa-linkedin"></i></a>
                 <a href="https://github.com/amirphiladam2/" aria-label="GitHub"><i class="fab fa-github"></i></a>
                 <a href="https://x.com/amirphiladam" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="https://www.instagram.com/amirp_2808/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.facebook.com/amirphiladam/" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/amirp_2808/" aria-label="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/amirphiladam/" aria-label="Facebook"><i
+                        class="fab fa-facebook"></i></a>
             </div>
         </nav>
     </header>
@@ -301,10 +576,32 @@
     <main>
         <!-- Home Section -->
         <section class="home">
-            <div class="container">
-                <h1>Welcome to My Professional Portfolio</h1>
-                <p>Showcasing my work, skills, and projects that I am passionate about.</p>
-                <a href="portfolio.html" class="btn">Explore My Work</a>
+            <div class="slider-wrapper">
+                <div class="slider">
+                    <img src="images/SwiftCart2.png" class="active" alt="Slide 1">
+                    <img src="images/Budget Tracker App UI.png" alt="Slide 2">
+                    <img src="images/smarthome.jpg" alt="Slide 3">
+                    <div class="slider-content">
+                        <h1>Welcome to My Professional Portfolio</h1>
+                        <p>Showcasing my work, skills, and projects that I am passionate about.</p>
+                        <a href="portfolio.html" class="btn">Explore My Work</a>
+                    </div>
+                </div>
+                <div class="slider-nav">
+                    <div class="dot active"></div>
+                    <div class="dot"></div>
+                </div>
+                <script>
+                    let currentIndex = 0;
+                    const images = document.querySelectorAll(".slider img");
+                    function slideImages() {
+                        images[currentIndex].classList.remove("active");
+                        currentIndex = (currentIndex + 1) % images.length;
+                        images[currentIndex].classList.add("active");
+                    }
+                    setInterval(slideImages, 4000);
+                </script>
+
             </div>
         </section>
 
@@ -344,12 +641,79 @@
                 </div>
             </div>
         </section>
+
+        <!-- Services Section -->
+        <section id="services" class="services">
+            <div class="container">
+                <h2>My Services</h2>
+                <p>I offer comprehensive digital solutions tailored to your needs.</p>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <i class="fas fa-paint-brush"></i>
+                        <h3>UIX Design</h3>
+                        <p>Creating intuitive and engaging user interfaces for web and mobile applications.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-microchip"></i>
+                        <h3>Student Projects</h3>
+                        <p>Software, Electronics and IoT Projects for College Students.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-globe"></i>
+                        <h3>Website Development</h3>
+                        <p>Custom websites that are fast, secure, and optimized for all devices.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h3>Mobile Apps</h3>
+                        <p>Cross-platform mobile applications for iOS and Android.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Footer Section -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 Amir P.Adam. All Rights Reserved.</p>
+            <div>
+                <img src="images/mylogo2.png" alt="AmirDevStudio" class="h-20 mb-4 brightness-0 invert" />
+                <p class="text-gray-400">Specializing in web and mobile for small businesses and individuals.</p>
+            </div>
+            <div>
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#">Website Development</a></li>
+                    <li><a href="#">Mobile Apps</a></li>
+                    <li><a href="Projects.html">Student Projects</a></li>
+                    <li><a href="#">Custom Development</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Menu</h3>
+                <ul>
+                    <li><a href="about.html">About Me</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="#">Blog</a></li <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Connect</h3>
+                <div class="social-icons">
+                    <a href="https://wa.me/9878036979" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.instagram.com/amirp_2808/" aria-label="Instagram"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/amirphiladam/" aria-label="Facebook"><i
+                            class="fab fa-facebook"></i></a>
+                    <a href="https://x.com/amirphiladam" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/in/amir-philip-29872524b/" aria-label="LinkedIn"><i
+                            class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2025 AmirDevStudio. All rights reserved.</p>
         </div>
     </footer>
 </body>
