@@ -22,8 +22,9 @@
             --primary-color: #e99517;
             --secondary-color: #564dd1;
             --dark-color: #01050e;
-            --green-color: #850765;
+            --green-color: #1aff05;
             --light-color: #f9f9f9;
+            --bg-color: #9785da28;
             --text-color: #111;
             --font-primary: 'Roboto', sans-serif;
             --font-secondary: 'Poppins', sans-serif;
@@ -251,8 +252,8 @@
 
         /* Portfolio Section */
         .portfolio {
-            background-color: var(--light-color);
             padding: 4rem 0;
+            background-color: var(--bg-color);
         }
 
         .portfolio h2 {
@@ -307,7 +308,7 @@
             left: -2px;
             right: -2px;
             bottom: -2px;
-            background: linear-gradient(45deg, #ff0000, #ff7300, #ffeb00, #00ff00, #007bff, #8a2be2, #ff00ff);
+            background: linear-gradient(45deg,  #1900ff9d, #4938e45b,#ff0000);
             background-size: 300% 300%;
             border-radius: 12px;
             z-index: -1;
@@ -317,10 +318,10 @@
         .portfolio-item::after {
             content: "";
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            top: 2;
+            left: 2;
+            right: 2;
+            bottom: 2;
             background: #fff;
             border-radius: 10px;
             z-index: -1;
@@ -329,7 +330,7 @@
         /* Services Section */
         .services {
             padding: 4rem 0;
-            background-color: var(--light-color);
+            background-color: var(--bg-color);
         }
 
         .services h2 {
@@ -380,11 +381,11 @@
           color: var(--secondary-color);
           margin-bottom: 1rem; /* Adjust margin to control spacing */
          /* Additional styles for positioning */
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         width: 100%;
-         height: 100px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          height: 100px;
         }
 
         .service-card h3 {
@@ -646,7 +647,7 @@
         <section id="services" class="services">
             <div class="container">
                 <h2>What I can do</h2>
-                <p>I design, develope web and apps,build student projects,provide full documentation.</p>
+                <p>Whether you need a stunning website, a user-friendly mobile app UI, or a custom solution for your business, I can help with that.</p>
                 <div class="services-grid">
                     <div class="service-card">
                         <i class="fas fa-paint-brush"></i>
