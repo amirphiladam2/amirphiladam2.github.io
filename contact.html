@@ -10,6 +10,7 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        /* CSS Variables */
         :root {
             --primary-color: #e99517;
             --secondary-color: #564dd1;
@@ -23,6 +24,7 @@
             --transition: all 0.3s ease;
         }
 
+        /* General Styles */
         body {
             font-family: var(--font-primary);
             margin: 0;
@@ -37,14 +39,14 @@
             margin: 0 auto;
         }
 
+        /* Header Section */
         .header {
             background-color: var(--dark-color);
             color: #fff;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            height: 80px;
-            padding: 1rem;
+            height: 100px;
+            padding: 1rem 0;
             box-shadow: var(--shadow);
             position: sticky;
             top: 0;
@@ -52,16 +54,26 @@
         }
 
         .logo {
-            height: 60px;
+            height: 220px;
             width: auto;
             display: block;
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
         }
 
         .navbar {
             display: flex;
+            justify-content: space-between;
             align-items: center;
             width: 100%;
-            justify-content: space-between;
         }
 
         .nav-links {
@@ -74,8 +86,9 @@
 
         .nav-links a {
             color: #fff;
-            font-weight: 500;
             text-decoration: none;
+            font-weight: 500;
+            position: relative;
             transition: var(--transition);
         }
 
@@ -83,6 +96,37 @@
             color: var(--primary-color);
         }
 
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            bottom: -5px;
+            left: 0;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .social-icons1 {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-icons1 a {
+            color: #fff;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-icons1 a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Mobile Menu Toggle */
         .menu-toggle {
             display: none;
             background: none;
@@ -92,17 +136,76 @@
             cursor: pointer;
         }
 
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header {
+                height: auto;
+                padding: 0.5rem 0;
+            }
+
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .menu-toggle {
+                display: block;
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+            }
+
+            .nav-links, .social-icons {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+                margin-top: 1rem;
+            }
+
+            .nav-links.active, .social-icons.active {
+                display: flex;
+            }
+
+            .logo {
+                height: 80px;
+            }
+
+            .nav-links a {
+                font-size: 0.9rem;
+            }
+
+            .social-icons a {
+                font-size: 1rem;
+            }
+        }
+        /* Main Content */
+        main {
+            padding-top: 100px;
+            /* Prevents content from being hidden behind the header */
+        }
+
+        .section {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: #092eff75;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
         .social-icons {
             display: flex;
-            gap: 1rem;
             justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 1rem;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
         }
 
         .social-icons a {
-            color: #464444;
-            font-size: 1.5rem;
+            color: var(--text-color);
+            font-size: 2rem;
             transition: var(--transition);
         }
 
@@ -110,54 +213,45 @@
             color: var(--primary-color);
         }
 
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-            }
-
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                align-items: center;
-                width: 100%;
-                text-align: center;
-                background: var(--dark-color);
-                padding: 1rem;
-                position: absolute;
-                top: 80px;
-                left: 0;
-                right: 0;
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            text-align: left;
         }
 
-        .section {
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 2rem;
-            background-color: #fff;
-            border-radius: 15px;
-            box-shadow: var(--shadow);
-            text-align: center;
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: var(--font-primary);
         }
 
-        .footer {
-            background-color: var(--dark-color);
-            color: #fff;
-            text-align: center;
-            padding: 1.5rem 0;
-            font-size: 0.9rem;
+        .contact-form button {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .contact-form button:hover {
+            background-color: var(--secondary-color);
         }
     </style>
 </head>
 
 <body>
+    <!-- Header Section -->
     <header class="header">
         <nav class="navbar container">
-            <div>
+            <div class="logo-container">
                 <img src="images/mylogo2.png" alt="AmirDevStudio" class="logo" />
             </div>
             <button class="menu-toggle" aria-label="Toggle menu">
@@ -169,30 +263,42 @@
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
+            <div class="social-icons1">
+                <a href="https://www.linkedin.com/in/amir-philip-29872524b/" aria-label="LinkedIn"><i
+                        class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/amirphiladam2/" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://x.com/amirphiladam" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/amirp_2808/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/amirphiladam/" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+            </div>
         </nav>
     </header>
 
+    <!-- Main Content -->
     <main>
         <section id="contact" class="section container">
-            <h2>Contact Me</h2>
+            <h2>Connect with Me</h2>
             <div class="social-icons">
                 <a href="https://twitter.com/amirphiladam" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                 <a href="https://www.instagram.com/amirp_2808/" aria-label="Instagram"><i
                         class="fab fa-instagram"></i></a>
                 <a href="https://www.facebook.com/amirphiladam" aria-label="Facebook"><i
                         class="fab fa-facebook"></i></a>
-                <a href="https://www.threads.net/amirdev_studio" aria-label="Threads"><i class="fab fa-threads"></i></a>
+                <a href="https://www.threads.net/amirdev_studio" aria-label="Threads"><i class="fab fa-instagram"></i></a>
                 <a href="https://techtacklenerd.blogspot.com/" aria-label="Website"><i class="fas fa-globe"></i></a>
             </div>
+            <h3>Or</h3>
+            <!-- Netlify Form -->
+            <form name="contact" method="POST" netlify class="contact-form">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
         </section>
     </main>
 
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 AmirDevStudio. All Rights Reserved.</p>
-        </div>
-    </footer>
-
+    <!-- JavaScript for Mobile Menu Toggle -->
     <script>
         document.querySelector('.menu-toggle').addEventListener('click', function () {
             document.querySelector('.nav-links').classList.toggle('active');
