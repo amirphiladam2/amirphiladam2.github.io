@@ -24,7 +24,9 @@
             <div class="logo-container">
                 <img src="images/mylogo2.png" alt="AmirDevStudio" class="logo" />
             </div>
-    
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="portfolio.html">Portfolio</a></li>
@@ -101,7 +103,13 @@
         <p>&copy; 2025 AmirDevStudio. All rights reserved.</p>
     </footer>
 </body>
-
+     !-- JavaScript for Mobile Menu Toggle -->
+    <script>
+        document.querySelector('.menu-toggle').addEventListener('click', function () {
+            document.querySelector('.nav-links').classList.toggle('active');
+            document.querySelector('.social-icons').classList.toggle('active');
+        });
+    </script>
 </html>
     <style>
         :root {
@@ -133,7 +141,7 @@
             margin: 0 auto;
         }
 
-         /* Header Section */
+                  /* Header Section */
         .header {
             background-color: var(--dark-color);
             color: #fff;
@@ -154,7 +162,6 @@
             transition: var(--transition);
         }
 
-
         .logo:hover {
             transform: scale(1.05);
         }
@@ -168,6 +175,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            width: 100%;
         }
 
         .nav-links {
@@ -218,6 +226,61 @@
 
         .social-icons a:hover {
             color: var(--primary-color);
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header {
+                height: auto;
+                padding: 0.5rem 0;
+            }
+
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .menu-toggle {
+                display: block;
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+            }
+
+            .nav-links, .social-icons {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+                margin-top: 1rem;
+            }
+
+            .nav-links.active, .social-icons.active {
+                display: flex;
+            }
+
+            .logo {
+                height: 80px;
+            }
+
+            .nav-links a {
+                font-size: 0.9rem;
+            }
+
+            .social-icons a {
+                font-size: 1rem;
+            }
         }
 
         /* Home Section */
