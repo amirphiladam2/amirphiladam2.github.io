@@ -1,0 +1,33 @@
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!--  created with Free Online Sitemap Generator www.xml-sitemaps.com  -->
+<url>
+<loc>https://amirdevstudio.netlify.app/</loc>
+<lastmod>2025-02-26T20:43:45+00:00</lastmod>
+<priority>1.00</priority>
+</url>
+<url>
+<loc>https://amirdevstudio.netlify.app/portfolio</loc>
+<lastmod>2025-02-26T20:43:45+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://amirdevstudio.netlify.app/about</loc>
+<lastmod>2025-02-26T20:43:45+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://amirdevstudio.netlify.app/contact</loc>
+<lastmod>2025-02-26T20:43:45+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://amirdevstudio.netlify.app/projects</loc>
+<lastmod>2025-02-26T20:43:45+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://amirdevstudio.netlify.app/resume</loc>
+<lastmod>2025-02-26T20:43:45+00:00</lastmod>
+<priority>0.64</priority>
+</url>
+</urlset>
