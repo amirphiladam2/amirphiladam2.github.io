@@ -4,9 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="google-site-verification" content="LyrJyzYpsPxP7Hhcl9Ckzq83tHK0t8Mmiv5BFZ_RZXc" />
-    <title>AmirDevStudio – Embedded Systems Engineer| App & Web Developer</title>
-  <meta name="description" content="Showcasing innovativ projects, along with embedded systems engineering solutions. Explore my portfolio to see how I can bring your ideas to life." />
+    <title>Amir P.Adam - Professional Portfolio</title>
     <meta name="description" content="Professional portfolio of Amir P.Adam showcasing skills, projects, and services.">
     <meta name="keywords" content="portfolio, web development, mobile apps, IoT projects, Amir P.Adam">
     <meta name="author" content="Amir P.Adam">
@@ -167,6 +165,21 @@
                 padding: 0.5rem 0;
             }
 
+            .social-icons {
+                display: none;
+                /* Initially hidden */
+                flex-direction: row;
+                /* Ensures they stay in a row when displayed */
+                justify-content: center;
+                /* Centers them */
+                gap: 1rem;
+            }
+
+            .social-icons.active {
+                display: flex;
+                /* Show when toggled */
+            }
+
             .navbar {
                 flex-direction: column;
                 align-items: flex-start;
@@ -179,7 +192,8 @@
                 right: 1rem;
             }
 
-            .nav-links, .social-icons {
+            .nav-links,
+            .social-icons {
                 display: none;
                 width: 100%;
                 flex-direction: column;
@@ -188,7 +202,13 @@
                 margin-top: 1rem;
             }
 
-            .nav-links.active, .social-icons.active {
+            .social-icons a {
+                flex-direction: row;
+                justify-content: center;
+            }
+
+            .nav-links.active,
+            .social-icons.active {
                 display: flex;
             }
 
@@ -257,19 +277,52 @@
             margin-bottom: 2rem;
         }
 
+        /* BUTTON ANIMATION */
         .slider-content .btn {
             padding: 0.8rem 2rem;
             background-color: var(--primary-color);
             color: #fff;
             border-radius: 25px;
             font-weight: bold;
-            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            transition: all 0.5s ease;
         }
 
         .slider-content .btn:hover {
-            background-color: var(--secondary-color);
             transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(233, 149, 23, 0.7);
         }
+
+        .slider-content .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: 0.5s;
+            z-index: -1;
+        }
+
+        .slider-content .btn:hover::before {
+            left: 100%;
+            animation: shimmer 1.5s infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                left: -100%;
+            }
+
+            100% {
+                left: 100%;
+            }
+        }
+
+        /* END BUTTON ANIMATION */
 
         .slider-nav {
             position: absolute;
@@ -328,36 +381,61 @@
             gap: 2rem;
         }
 
+        /* PORTFOLIO CARD ANIMATION */
         .portfolio-item {
             background: #fff;
             border-radius: 10px;
             box-shadow: var(--shadow);
             overflow: hidden;
-            transition: var(--transition);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             padding: 2px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s forwards;
+            animation-delay: calc(var(--card-index, 0) * 0.2s);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .portfolio-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
         }
 
         .portfolio-item img {
             width: 100%;
             height: 200px;
             object-fit: cover;
+            transition: all 0.5s ease;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.1);
         }
 
         .portfolio-item h3 {
             font-size: 1.3rem;
             margin: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-item:hover h3 {
+            color: var(--secondary-color);
         }
 
         .portfolio-item p {
             color: #555;
             margin: 0 1rem 1rem;
+            transition: all 0.3s ease;
         }
+
+        /* END PORTFOLIO CARD ANIMATION */
 
         /* Animated Border for Portfolio Items */
         .portfolio-item::before {
@@ -367,7 +445,7 @@
             left: -2px;
             right: -2px;
             bottom: -2px;
-            background: linear-gradient(45deg,  #1900ff9d, #00ff0050, #ff000071, #f00101b7);
+            background: linear-gradient(45deg, #1900ff9d, #00ff0050, #ff000071, #f00101b7);
             background-size: 300% 300%;
             border-radius: 12px;
             z-index: -1;
@@ -414,7 +492,7 @@
             padding: 0 1rem;
         }
 
-        /* Service Card Styles */
+        /* SERVICE CARD ANIMATION */
         .service-card {
             display: flex;
             flex-direction: column;
@@ -425,14 +503,18 @@
             box-shadow: var(--shadow);
             padding: 2rem;
             text-align: center;
-            transition: var(--transition);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             padding: 3px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s forwards;
+            animation-delay: calc(var(--card-index, 0) * 0.2s);
         }
 
         .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
         }
 
         .service-card i {
@@ -444,18 +526,32 @@
             justify-content: center;
             width: 100%;
             height: 100px;
+            transition: all 0.5s ease;
+        }
+
+        .service-card:hover i {
+            transform: scale(1.2) rotate(10deg);
+            color: var(--secondary-color);
         }
 
         .service-card h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
             color: var(--dark-color);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover h3 {
+            color: var(--secondary-color);
         }
 
         .service-card p {
             font-size: 1rem;
             color: #555;
+            transition: all 0.3s ease;
         }
+
+        /* END SERVICE CARD ANIMATION */
 
         /* Animated Border for Service Cards */
         .service-card::before {
@@ -582,11 +678,14 @@
                 <li><a href="contact.html">Contact</a></li>
             </ul>
             <div class="social-icons">
-                <a href="https://www.linkedin.com/in/amir-philip-29872524b/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.linkedin.com/in/amir-philip-29872524b/" aria-label="LinkedIn"><i
+                        class="fab fa-linkedin"></i></a>
                 <a href="https://github.com/amirphiladam2/" aria-label="GitHub"><i class="fab fa-github"></i></a>
                 <a href="https://x.com/amirphiladam" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="https://www.instagram.com/amirp_2808/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.facebook.com/amirphiladam/" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/amirp_2808/" aria-label="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/amirphiladam/" aria-label="Facebook"><i
+                        class="fab fa-facebook"></i></a>
             </div>
         </nav>
     </header>
@@ -616,18 +715,18 @@
         <!-- Portfolio Section -->
         <section id="portfolio" class="portfolio">
             <div class="container">
-                <h2>Highlights</h2>
+                <h2>Highlights of My Projects</h2>
                 <div class="portfolio-grid">
                     <!-- Card 1 -->
                     <a href="https://techtacklenerd.blogspot.com/2023/07/led-control-using-alexa-and-google-home.html"
-                        target="_blank" class="portfolio-item">
+                        target="_blank" class="portfolio-item" style="--card-index: 0">
                         <img src="images/alexagoogle.jpeg" alt="Home Automation" loading="lazy">
                         <h3>Home Automation With Google And Alexa Controllers</h3>
                         <p>Projects</p>
                     </a>
                     <!-- Card 2 -->
                     <a href="https://github.com/amirphiladam2/IoT-Weather-Monitoring-System" target="_blank"
-                        class="portfolio-item">
+                        class="portfolio-item" style="--card-index: 1">
                         <img src="images/iot.jpeg" alt="IoT Weather Monitoring System" loading="lazy">
                         <h3>IoT Weather Monitoring System</h3>
                         <p>Real-time weather monitoring solution using IoT sensors with cloud data analytics and mobile
@@ -635,7 +734,7 @@
                     </a>
                     <!-- Card 3 -->
                     <a href="https://techtacklenerd.blogspot.com/p/privacypolicy.html" target="_blank"
-                        class="portfolio-item">
+                        class="portfolio-item" style="--card-index: 2">
                         <img src="images/Budget Tracker App UI.png" alt="Budget Tracker App" loading="lazy">
                         <h3>Budget Tracker App</h3>
                         <p>Intuitive mobile application designed to help users track expenses, set budgets, and
@@ -643,7 +742,7 @@
                     </a>
                     <!-- Card 4 -->
                     <a href="https://techtacklenerd.blogspot.com/2024/10/introduction-in-this-project-ill-show.html"
-                        target="_blank" class="portfolio-item">
+                        target="_blank" class="portfolio-item" style="--card-index: 3">
                         <img src="images/wireless.jpg" alt="Wireless Sensor Network" loading="lazy">
                         <h3>Wireless Sensor Network</h3>
                         <p>Scalable wireless sensor network solution for industrial monitoring with low power
@@ -656,11 +755,11 @@
         <!-- Services Section -->
         <section id="services" class="services">
             <div class="container">
-                <h2 class="section-title">What I can do</h2>
+                <h2 class="section-title">My Services</h2>
                 <p class="subtitle">Whether you need a stunning website, a user-friendly mobile app UI, or a custom
                     solution for your business, I can help bring your vision to life.</p>
                 <div class="services-grid">
-                    <div class="service-card">
+                    <div class="service-card" style="--card-index: 0">
                         <div class="icon-container">
                             <i class="fas fa-paint-brush"></i>
                         </div>
@@ -668,7 +767,7 @@
                         <p>Creating intuitive and engaging user interfaces for web and mobile applications that enhance
                             user experience and drive engagement.</p>
                     </div>
-                    <div class="service-card">
+                    <div class="service-card" style="--card-index: 1">
                         <div class="icon-container">
                             <i class="fas fa-microchip"></i>
                         </div>
@@ -676,7 +775,7 @@
                         <p>Specialized assistance for academic software, electronics, and IoT projects with
                             comprehensive documentation and implementation support.</p>
                     </div>
-                    <div class="service-card">
+                    <div class="service-card" style="--card-index: 2">
                         <div class="icon-container">
                             <i class="fas fa-globe"></i>
                         </div>
@@ -684,7 +783,7 @@
                         <p>Custom websites that are fast, secure, responsive, and optimized for all devices with modern
                             technologies and best practices.</p>
                     </div>
-                    <div class="service-card">
+                    <div class="service-card" style="--card-index: 3">
                         <div class="icon-container">
                             <i class="fas fa-mobile-alt"></i>
                         </div>
@@ -692,10 +791,9 @@
                         <p>Cross-platform mobile applications for iOS and Android using modern frameworks that deliver
                             native-like performance and user experience.</p>
                     </div>
-                        <p>Cross-platform mobile applications for iOS and Android.</p>
-                    </div>
-
                 </div>
+
+            </div>
             </div>
         </section>
     </main>
@@ -748,42 +846,42 @@
             document.querySelector('.social-icons').classList.toggle('active');
         });
         let currentIndex = 0;
-            const images = document.querySelectorAll(".slider img");
-            const dots = document.querySelectorAll(".slider-nav .dot");
+        const images = document.querySelectorAll(".slider img");
+        const dots = document.querySelectorAll(".slider-nav .dot");
 
-            // Function to show the current slide
-            function showSlide(index) {
-                // Hide all images
-                images.forEach((img) => img.classList.remove("active"));
-                // Remove active class from all dots
-                dots.forEach((dot) => dot.classList.remove("active"));
-                // Show the current image
-                images[index].classList.add("active");
-                // Highlight the current dot
-                dots[index].classList.add("active");
-            }
+        // Function to show the current slide
+        function showSlide(index) {
+            // Hide all images
+            images.forEach((img) => img.classList.remove("active"));
+            // Remove active class from all dots
+            dots.forEach((dot) => dot.classList.remove("active"));
+            // Show the current image
+            images[index].classList.add("active");
+            // Highlight the current dot
+            dots[index].classList.add("active");
+        }
 
-            // Function to move to the next slide
-            function nextSlide() {
-                currentIndex = (currentIndex + 1) % images.length;
-                showSlide(currentIndex);
-            }
-
-            // Automatically switch slides every 4 seconds
-            let slideInterval = setInterval(nextSlide, 4000);
-
-            // Add click event listeners to dots
-            dots.forEach((dot, index) => {
-                dot.addEventListener("click", () => {
-                    clearInterval(slideInterval); // Stop auto-sliding
-                    currentIndex = index;
-                    showSlide(currentIndex);
-                    slideInterval = setInterval(nextSlide, 4000); // Restart auto-sliding
-                });
-            });
-
-            // Show the first slide initially
+        // Function to move to the next slide
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % images.length;
             showSlide(currentIndex);
+        }
+
+        // Automatically switch slides every 4 seconds
+        let slideInterval = setInterval(nextSlide, 4000);
+
+        // Add click event listeners to dots
+        dots.forEach((dot, index) => {
+            dot.addEventListener("click", () => {
+                clearInterval(slideInterval); // Stop auto-sliding
+                currentIndex = index;
+                showSlide(currentIndex);
+                slideInterval = setInterval(nextSlide, 4000); // Restart auto-sliding
+            });
+        });
+
+        // Show the first slide initially
+        showSlide(currentIndex);
     </script>
 </body>
 
