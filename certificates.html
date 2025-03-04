@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Certificates | My Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+        }
+
+        .certificate-card {
+            transition: all 0.3s ease-in-out;
+            perspective: 1000px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(90, 52, 52, 0.329);
+        }
+
+        .certificate-card:hover {
+            transform: translateY(-10px) rotateX(2deg);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .certificate-card:hover .certificate-icon {
+            transform: rotate(360deg);
+        }
+
+        .certificate-icon {
+            transition: all 0.5s ease-in-out;
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col font-sans selection:bg-blue-200">
+    <header class="glass-effect shadow-sm sticky top-0 z-10">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div>
+                <h1 class="text-3xl font-bold text-gray-800 flex items-center">
+                    Certificates
+                    <span id="certificateCount"
+                        class="ml-2 text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded-full">3</span>
+                </h1>
+                <p class="text-sm text-gray-500">Professional Development Journey</p>
+            </div>
+            <nav>
+                <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                    Download All
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-12 flex-grow">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Certificate 1: UX Design -->
+            <div class="certificate-card rounded-xl shadow-lg overflow-hidden hover:shadow-xl">
+                <div class="p-6">
+                    <div class="flex items-center mb-4">
+                        <div
+                            class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4 certificate-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                            </svg>
+                        </div>
+                        <h2 class="text-xl font-semibold text-gray-800">Foundation in User Experience (UX) Design</h2>
+                    </div>
+                    <p class="text-gray-600 mb-4">Issued by Google</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-gray-500">Issued: March 2025</span>
+                        <a href="https://coursera.org/share/919578022d802c2af10e24dc020a6e97" target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-blue-600 hover:bg-blue-50 px-3 py-1 rounded-full transition-colors flex items-center">
+                            View
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certificate 2: HTML & CSS -->
+            <div class="certificate-card rounded-xl shadow-lg overflow-hidden hover:shadow-xl">
+                <div class="p-6">
+                    <div class="flex items-center mb-4">
+                        <div
+                            class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4 certificate-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                            </svg>
+                        </div>
+                        <h2 class="text-xl font-semibold text-gray-800">HTML & CSS in Depth</h2>
+                    </div>
+                    <p class="text-gray-600 mb-4">Issued by Meta</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-gray-500">Issued: March 2025</span>
+                        <a href="https://coursera.org/share/8ba83e3c9eb5ea5e02324ed43738f0b6" target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-blue-600 hover:bg-blue-50 px-3 py-1 rounded-full transition-colors flex items-center">
+                            View
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certificate 3: Web Development -->
+            <div class="certificate-card rounded-xl shadow-lg overflow-hidden hover:shadow-xl">
+                <div class="p-6">
+                    <div class="flex items-center mb-4">
+                        <div
+                            class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4 certificate-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-600" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" />
+                            </svg>
+                        </div>
+                        <h2 class="text-xl font-semibold text-gray-800">HTML, CSS & JavaScript for Web Developers</h2>
+                    </div>
+                    <p class="text-gray-600 mb-4">Issued by John Hopkins University</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-gray-500">Issued: January 2023</span>
+                        <a href="https://coursera.org/share/5bc935728f8d29d320eec5cea3e379a3" target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-green-600 hover:bg-green-50 px-3 py-1 rounded-full transition-colors flex items-center">
+                            View
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="glass-effect shadow-sm">
+        <div class="container mx-auto px-4 py-4 text-center">
+            <p class="text-gray-500 text-sm">
+                © 2025 AmirDevStudio. All rights reserved.
+                <span class="block text-xs text-gray-400 mt-1">Powered by Continuous Learning</span>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Dynamically update certificate count
+        const certificateCount = document.getElementById('certificateCount');
+        const certificates = document.querySelectorAll('.certificate-card');
+        certificateCount.textContent = certificates.length;
+    </script>
+</body>
+
+</html>
