@@ -9,15 +9,590 @@
     <meta name="keywords" content="portfolio, web development, mobile apps, IoT projects, Amir P.Adam">
     <meta name="author" content="Amir P.Adam">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Poppins:wght@400;600&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Inter:wght@300;400;600&display=swap"
         rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
+    <!-- AOS Animation Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <style>
+        :root {
+            --primary-color: #3a86ff;
+            --primary-light: #61a0ff;
+            --primary-dark: #2667cc;
+            --secondary-color: #ff006e;
+            --accent-color: #8338ec;
+            --dark-color: #0f172a;
+            --dark-secondary: #1e293b;
+            --light-color: #f8fafc;
+            --gray-color: #64748b;
+            --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            --gradient-secondary: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            --font-primary: 'Montserrat', sans-serif;
+            --font-secondary: 'Inter', sans-serif;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --border-radius: 12px;
+        }
+
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-secondary);
+            color: var(--dark-color);
+            line-height: 1.6;
+            background-color: var(--light-color);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-primary);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Utility Classes */
+        .text-gradient {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            font-weight: 600;
+            border-radius: 50px;
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            border: none;
+            cursor: pointer;
+            font-family: var(--font-primary);
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+            box-shadow: 0 4px 15px rgba(58, 134, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 6px 20px rgba(58, 134, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: var(--gradient-secondary);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 0, 110, 0.3);
+        }
+
+        .btn-secondary:hover {
+            box-shadow: 0 6px 20px rgba(255, 0, 110, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Header Section */
+        .header {
+            background-color: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            color: var(--light-color);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .header.scrolled {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            padding: 0.5rem 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            height: 60px;
+            width: auto;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: var(--light-color);
+            font-weight: 500;
+            position: relative;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-light);
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            bottom: -5px;
+            left: 0;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-icons a {
+            color: var(--light-color);
+            font-size: 1.2rem;
+            transition: var(--transition);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-icons a:hover {
+            color: var(--primary-light);
+            transform: translateY(-3px);
+        }
+
+        .social-icons a:hover::before {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--light-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 1100;
+        }
+
+        .menu-toggle:hover {
+            color: var(--primary-light);
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            padding: 8rem 0 4rem;
+            background-color: var(--light-color);
+            position: relative;
+        }
+
+        .portfolio-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .portfolio h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .portfolio h2::after {
+            content: "";
+            position: absolute;
+            width: 60px;
+            height: 4px;
+            background: var(--gradient-primary);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .portfolio-description {
+            max-width: 600px;
+            margin: 2rem auto;
+            color: var(--gray-color);
+            font-size: 1.1rem;
+        }
+
+        .portfolio-nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2.5rem;
+            gap: 1rem;
+        }
+
+        .portfolio-nav a {
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 500;
+            color: var(--gray-color);
+            background-color: rgba(100, 116, 139, 0.1);
+            transition: var(--transition);
+        }
+
+        .portfolio-nav a:hover,
+        .portfolio-nav a.active {
+            background: var(--gradient-primary);
+            color: white;
+            box-shadow: 0 4px 10px rgba(58, 134, 255, 0.3);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            padding: 0 1rem;
+        }
+
+        .portfolio-item {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: var(--transition);
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .portfolio-img-container {
+            position: relative;
+            overflow: hidden;
+            height: 220px;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .portfolio-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .portfolio-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+            transition: var(--transition);
+        }
+
+        .portfolio-item:hover h3 {
+            color: var(--primary-color);
+        }
+
+        .portfolio-category {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            background-color: rgba(58, 134, 255, 0.1);
+            color: var(--primary-color);
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-top: 0.5rem;
+            align-self: flex-start;
+        }
+
+        /* Footer Section */
+        .footer {
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .footer-logo {
+            height: 50px;
+            margin-bottom: 1rem;
+        }
+
+        .footer-nav {
+            display: flex;
+            gap: 2rem;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .footer-nav a {
+            color: var(--light-color);
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+
+        .footer-nav a:hover {
+            opacity: 1;
+            color: var(--primary-light);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .footer-social a {
+            color: var(--light-color);
+            font-size: 1.3rem;
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+
+        .footer-social a:hover {
+            opacity: 1;
+            color: var(--primary-light);
+            transform: translateY(-3px);
+        }
+
+        .footer-copy {
+            margin-top: 1rem;
+            color: rgba(248, 250, 252, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* Background Elements */
+        .bg-blob {
+            position: absolute;
+            background: linear-gradient(135deg, rgba(58, 134, 255, 0.2), rgba(131, 56, 236, 0.2));
+            filter: blur(70px);
+            border-radius: 100%;
+            z-index: -1;
+        }
+
+        .blob-1 {
+            top: 10%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+        }
+
+        .blob-2 {
+            bottom: 10%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: linear-gradient(135deg, rgba(255, 0, 110, 0.15), rgba(131, 56, 236, 0.15));
+        }
+
+        /* Animation for Portfolio Items */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fadeInUp {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .portfolio-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                height: auto;
+                padding: 0.8rem 0;
+            }
+
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .menu-toggle {
+                display: block;
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+            }
+
+            .nav-links, .social-icons {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+                margin-top: 1rem;
+            }
+
+            .nav-links.active, .social-icons.active {
+                display: flex;
+                animation: fadeIn 0.3s ease forwards;
+            }
+
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(-10px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            .logo {
+                height: 50px;
+            }
+
+            .portfolio h2 {
+                font-size: 2rem;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 1.5rem;
+            }
+
+            .portfolio-nav {
+                gap: 0.5rem;
+            }
+
+            .portfolio-nav a {
+                padding: 0.4rem 1.2rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                width: 95%;
+            }
+
+            .portfolio {
+                padding: 6rem 0 3rem;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio-img-container {
+                height: 200px;
+            }
+
+            .footer-nav {
+                gap: 1rem;
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 
 <body>
+    <!-- Background Elements -->
+    <div class="bg-blob blob-1"></div>
+    <div class="bg-blob blob-2"></div>
+
     <!-- Header Section -->
     <header class="header">
         <nav class="navbar container">
@@ -38,8 +613,10 @@
                         class="fab fa-linkedin"></i></a>
                 <a href="https://github.com/amirphiladam2/" aria-label="GitHub"><i class="fab fa-github"></i></a>
                 <a href="https://x.com/amirphiladam" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="https://www.instagram.com/amirp_2808/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.facebook.com/amirphiladam/" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/amirp_2808/" aria-label="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/amirphiladam/" aria-label="Facebook"><i
+                        class="fab fa-facebook"></i></a>
             </div>
         </nav>
     </header>
@@ -49,372 +626,139 @@
         <!-- Portfolio Section -->
         <section class="portfolio">
             <div class="container">
-                <h2>Portfolio</h2>
                 <div class="portfolio-nav">
-                    <a href="portfolio.html">All</a>
-                    <a href="Projects.html" ">Projects</a>
-                    <a href="resume.html" >Resume</a>
-                    <a href="certificates.html" >Certificates</a>
+                    <a href="portfolio.html" class="active">All</a>
+                    <a href="Projects.html">Projects</a>
+                    <a href="resume.html">Resume</a>
+                    <a href="certificates.html">Certificates</a>
                     <a href="#">Patents</a>
                     <a href="#">Research Papers</a>
                 </div>
                 <div class="portfolio-grid">
                     <!-- Card 1 -->
-                    <a href="https://techtacklenerd.blogspot.com/p/privacypolicy.html"
-                        target="_blank" class="portfolio-item">
-                        <img src="images/Budget Tracker App UI.png" alt="Budget Tracker App" loading="lazy">
-                        <h3>Budget Tracker App</h3>
-                        <p>Projects</p>
+                    <a href="https://techtacklenerd.blogspot.com/p/privacypolicy.html" target="_blank"
+                        class="portfolio-item" data-aos="fade-up" data-aos-delay="100">
+                        <div class="portfolio-img-container">
+                            <img src="images/Budget Tracker App UI.png" alt="Budget Tracker App" loading="lazy">
+                        </div>
+                        <div class="portfolio-content">
+                            <h3>Budget Tracker App</h3>
+                            <span class="portfolio-category">Projects</span>
+                        </div>
                     </a>
                     <!-- Card 2 -->
                     <a href="https://techtacklenerd.blogspot.com/2023/07/led-control-using-alexa-and-google-home.html"
-                        target="_blank" class="portfolio-item">
-                        <img src="images/alexagoogle.jpeg" alt="Home Automation" loading="lazy">
-                        <h3>Home Automation With Google And Alexa Controllers</h3>
-                        <p>Projects</p>
+                        target="_blank" class="portfolio-item" data-aos="fade-up" data-aos-delay="200">
+                        <div class="portfolio-img-container">
+                            <img src="images/alexagoogle.jpeg" alt="Home Automation" loading="lazy">
+                        </div>
+                        <div class="portfolio-content">
+                            <h3>Home Automation With Google And Alexa Controllers</h3>
+                            <span class="portfolio-category">Projects</span>
+                        </div>
                     </a>
                     <!-- Card 3 -->
                     <a href="https://github.com/amirphiladam2/IoT-Weather-Monitoring-System" target="_blank"
-                        class="portfolio-item">
-                        <img src="images/iot.jpeg" alt="IoT Weather Monitoring System" loading="lazy">
-                        <h3>IoT Weather Monitoring System</h3>
-                        <p>Projects</p>
+                        class="portfolio-item" data-aos="fade-up" data-aos-delay="300">
+                        <div class="portfolio-img-container">
+                            <img src="images/iot.jpeg" alt="IoT Weather Monitoring System" loading="lazy">
+                        </div>
+                        <div class="portfolio-content">
+                            <h3>IoT Weather Monitoring System</h3>
+                            <span class="portfolio-category">Projects</span>
+                        </div>
                     </a>
                     <!-- Card 4 -->
-                    <a href="https://techtacklenerd.blogspot.com/2024/10/introduction-in-this-project-ill-show.html" target="_blank" class="portfolio-item">
-                        <img src="images/wireless.jpg" alt="Wireless Sensor Network" loading="lazy">
-                        <h3>Wireless Sensor Network</h3>
-                        <p>Projects</p>
+                    <a href="https://techtacklenerd.blogspot.com/2024/10/introduction-in-this-project-ill-show.html"
+                        target="_blank" class="portfolio-item" data-aos="fade-up" data-aos-delay="400">
+                        <div class="portfolio-img-container">
+                            <img src="images/wireless.jpg" alt="Wireless Sensor Network" loading="lazy">
+                        </div>
+                        <div class="portfolio-content">
+                            <h3>Wireless Sensor Network</h3>
+                            <span class="portfolio-category">Projects</span>
+                        </div>
                     </a>
                     <!-- Card 5 -->
-                    <a href="https://techtacklenerd.blogspot.com/2024/10/home-automation-project-using-esp32-and.html" target="_blank" class="portfolio-item">
-                        <img src="images/smarthome.jpg" alt="Home Automation" loading="lazy">
-                        <h3>Home Automation With Pyserial</h3>
-                        <p>Projects</p>
+                    <a href="https://techtacklenerd.blogspot.com/2024/10/home-automation-project-using-esp32-and.html"
+                        target="_blank" class="portfolio-item" data-aos="fade-up" data-aos-delay="500">
+                        <div class="portfolio-img-container">
+                            <img src="images/smarthome.jpg" alt="Home Automation" loading="lazy">
+                        </div>
+                        <div class="portfolio-content">
+                            <h3>Home Automation With Pyserial</h3>
+                            <span class="portfolio-category">Projects</span>
+                        </div>
                     </a>
                 </div>
             </div>
         </section>
     </main>
-        </section>
-    </main>
 
     <!-- Footer Section -->
     <footer class="footer">
-        <p>&copy; 2025 AmirDevStudio. All rights reserved.</p>
+        <div class="container">
+            <div class="footer-content">
+                <img src="images/mylogo2.png" alt="AmirDevStudio" class="footer-logo">
+                <div class="footer-nav">
+                    <a href="index.html">Home</a>
+                    <a href="portfolio.html">Portfolio</a>
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="footer-social">
+                    <a href="https://www.linkedin.com/in/amir-philip-29872524b/" aria-label="LinkedIn"><i
+                            class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/amirphiladam2/" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://x.com/amirphiladam" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/amirp_2808/" aria-label="Instagram"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/amirphiladam/" aria-label="Facebook"><i
+                            class="fab fa-facebook"></i></a>
+                </div>
+                <p class="footer-copy">&copy; 2025 AmirDevStudio. All rights reserved.</p>
+            </div>
+        </div>
     </footer>
-</body>
-     !-- JavaScript for Mobile Menu Toggle -->
+
+    <!-- JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
+        // Initialize AOS animation library
+        document.addEventListener('DOMContentLoaded', function () {
+            AOS.init({
+                duration: 800,
+                easing: 'ease-in-out',
+                once: true
+            });
+        });
+
+        // Mobile Menu Toggle
         document.querySelector('.menu-toggle').addEventListener('click', function () {
             document.querySelector('.nav-links').classList.toggle('active');
             document.querySelector('.social-icons').classList.toggle('active');
         });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function () {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Portfolio filter functionality
+        const portfolioNavLinks = document.querySelectorAll('.portfolio-nav a');
+        portfolioNavLinks.forEach(link => {
+            link.addEventListener('click', function (e) {
+                // In a real implementation, this would filter the projects
+                // For now, just update the active class
+                portfolioNavLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
     </script>
+</body>
 </html>
-    <style>
-        :root {
-            --primary-color: #e99517;
-            --secondary-color: #564dd1;
-            --dark-color: #01050e;
-             --bg-color: #071e851c;
-            --light-color: #f9f9f9;
-            --text-color: #111;
-            --font-primary: 'Roboto', sans-serif;
-            --font-secondary: 'Poppins', sans-serif;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
-        }
-        /* General Styles */
-        body {
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            color: #333;
-            line-height: 1.6;
-           
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-                  /* Header Section */
-        .header {
-            background-color: var(--dark-color);
-            color: #fff;
-            display: flex;
-            align-items: center;
-            height: 100px;
-            padding: 1rem 0;
-            box-shadow: var(--shadow);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .logo {
-            height: 220px;
-            width: auto;
-            display: block;
-            transition: var(--transition);
-        }
-
-        .logo:hover {
-            transform: scale(1.05);
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-        }
-
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-        }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 1.5rem;
-            margin: 0;
-            padding: 0;
-        }
-
-        .nav-links a {
-            color: #fff;
-            font-weight: 500;
-            position: relative;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-color);
-        }
-
-        .nav-links a::after {
-            content: "";
-            position: absolute;
-            width: 0;
-            height: 2px;
-            background-color: var(--primary-color);
-            bottom: -5px;
-            left: 0;
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .social-icons a {
-            color: #fff;
-            font-size: 1.2rem;
-            transition: var(--transition);
-        }
-
-        .social-icons a:hover {
-            color: var(--primary-color);
-        }
-
-        /* Mobile Menu Toggle */
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: #fff;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .header {
-                height: auto;
-                padding: 0.5rem 0;
-            }
-
-            .navbar {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .menu-toggle {
-                display: block;
-                position: absolute;
-                top: 1rem;
-                right: 1rem;
-            }
-
-            .nav-links, .social-icons {
-                display: none;
-                width: 100%;
-                flex-direction: column;
-                align-items: center;
-                gap: 0.5rem;
-                margin-top: 1rem;
-            }
-
-            .nav-links.active, .social-icons.active {
-                display: flex;
-            }
-
-            .logo {
-                height: 80px;
-            }
-
-            .nav-links a {
-                font-size: 0.9rem;
-            }
-
-            .social-icons a {
-                font-size: 1rem;
-            }
-        }
-
-        /* Home Section */
-        .home {
-            background: linear-gradient(to bottom right, #61dafb, #282c34);
-            color: #fff;
-            text-align: center;
-            padding: 5rem 1rem;
-        }
-
-        .home h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .home p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            background-color: #fff;
-            color: #282c34;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: bold;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        .btn:hover {
-            background-color: #61dafb;
-            color: #fff;
-        }
-
-        /* Portfolio Section */
-        .portfolio {
-            background-color: var(--bg-color);
-            padding: 3rem 0;
-        }
-
-        .portfolio h2 {
-            text-align: center;
-            font-size: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .portfolio-nav {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .portfolio-nav a {
-            text-decoration: none;
-            color: #333;
-            font-weight: bold;
-            margin: 0 1rem;
-            transition: color 0.3s;
-        }
-
-        .portfolio-nav a:hover {
-            color: #61dafb;
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            padding: 0 1rem;
-        }
-
-        .portfolio-item {
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-          .portfolio-item {
-           display: block; /* Makes the entire card clickable */
-           text-decoration: none; /* Removes underline on links */
-           color: inherit; /* Ensures text color matches the design */
-       }
-
-        .portfolio-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-        }
-
-        .portfolio-item img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .portfolio-item h3 {
-            font-size: 1.2rem;
-            margin: 1rem;
-        }
-
-        .portfolio-item p {
-            color: #555;
-            margin: 0 1rem 1rem;
-        }
-
-        /* Footer Section */
-        .footer {
-            background-color: #000000;
-            color: #fff;
-            text-align: center;
-            padding: 1rem 0;
-            margin-top: 0rem;
-            font-size: 0.9rem;
-        }
-
-        .footer p {
-            margin: 0;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-links {
-                flex-direction: column;
-                gap: 1rem;
-                align-items: center;
-            }
-
-            .navbar {
-                flex-direction: column;
-                gap: 1rem;
-            }
-        }
-    </style>
-</head>
-
