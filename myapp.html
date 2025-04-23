@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BuTracker App</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #000105;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .app-info {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .app-info h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .app-description {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        .carousel-container {
+            position: relative;
+            max-width: 900px;
+            margin: 2rem auto;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 600px;
+        }
+
+        .slide {
+            min-width: 100%;
+            position: relative;
+            background-color: #fff;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 20px;
+        }
+
+        .slide-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+
+        .carousel-control {
+            background-color: #000000;
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin: 0 0.5rem;
+            transition: background-color 0.3s;
+        }
+
+        .carousel-control:hover {
+            background-color: #1a2530;
+        }
+
+        .dots-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            background-color: #bbb;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .dot.active {
+            background-color: #63346d;
+        }
+
+        .thumbnail-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 2rem;
+            gap: 15px;
+        }
+
+        .thumbnail {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: all 0.3s;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .thumbnail:hover {
+            transform: translateY(-5px);
+        }
+
+        .thumbnail.active {
+            border-color: #3498db;
+        }
+
+        footer {
+            background-color: #000407;
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .carousel-container {
+                height: auto;
+            }
+            
+            .carousel {
+                height: 400px;
+            }
+            
+            .app-description {
+                font-size: 1rem;
+            }
+            
+            .thumbnail {
+                width: 80px;
+                height: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>My Budget Tracker App (BuTracker v1.0)</h1>
+        <p class="subtitle">Explore my app's features</p>
+    </header>
+
+    <div class="container">
+        <section class="app-info">
+            <h2>Check My Budget Tracker App</h2>
+            <p class="app-description">
+                Welcome to BuTracker App! Here you can explore screenshots showcasing the key features
+                and beautiful interfaces of my application. Navigate through the images to see what makes
+                my app special.
+            </p>
+        </section>
+
+        <div class="carousel-container">
+            <div class="carousel" id="carousel">
+                <!-- Add your actual screenshots here -->
+                 <div class="slide">
+                    <img src="images/onboard.jpg" alt="Onboard Screen">
+                    <div class="slide-info">Onboard Screen</div>
+                </div>
+                <div class="slide">
+                    <img src="images/signin.jpg" alt="Login Screen">
+                    <div class="slide-info">Login Screen</div>
+                </div>
+                
+                <div class="slide">
+                    <img src="images/home.jpg" alt="Home Screen">
+                    <div class="slide-info">Home Screen</div>
+                </div>
+                <div class="slide">
+                    <img src="images/Transaction.jpg" alt="Transaction Screen">
+                    <div class="slide-info">Transaction Screen</div>
+                </div>
+                <div class="slide">
+                    <img src="images/AddTransaction.jpg" alt="Add Transaction Screen">
+                    <div class="slide-info">Add Transaction</div>
+                </div>
+                <div class="slide">
+                    <img src="images/Data.jpg" alt="Data Screen">
+                    <div class="slide-info">User Expense Data</div>
+                </div>
+                <div class="slide">
+                    <img src="images/expense.jpg" alt="Expense Breakdown Screen">
+                    <div class="slide-info">Expense Breakdown</div>
+                </div>
+                <div class="slide">
+                    <img src="images/ProfileScreen.jpg" alt="Profile Screen">
+                    <div class="slide-info">User Profile</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="carousel-controls">
+            <button class="carousel-control" id="prev-btn">&#8592;</button>
+            <button class="carousel-control" id="next-btn">&#8594;</button>
+        </div>
+
+        <div class="dots-container" id="dots-container"></div>
+
+        <div class="thumbnail-container" id="thumbnail-container">
+            <!-- Thumbnails are created dynamically in JavaScript -->
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 AmirDevStudio</p>
+    </footer>
+
+    <script>
+        // Carousel Functionality
+        const carousel = document.getElementById('carousel');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const dotsContainer = document.getElementById('dots-container');
+        const thumbnailContainer = document.getElementById('thumbnail-container');
+        
+        let currentIndex = 0;
+        let slides = document.querySelectorAll('.slide');
+        
+        // Initialize carousel
+        function initCarousel() {
+            slides = document.querySelectorAll('.slide');
+            createDots();
+            createThumbnails();
+            showSlide(currentIndex);
+        }
+        
+        // Create dots based on number of slides
+        function createDots() {
+            dotsContainer.innerHTML = '';
+            for (let i = 0; i < slides.length; i++) {
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                if (i === currentIndex) {
+                    dot.classList.add('active');
+                }
+                dot.addEventListener('click', () => {
+                    showSlide(i);
+                });
+                dotsContainer.appendChild(dot);
+            }
+        }
+        
+        // Create thumbnails for each slide
+        function createThumbnails() {
+            thumbnailContainer.innerHTML = '';
+            slides.forEach((slide, index) => {
+                const img = slide.querySelector('img');
+                const thumbnail = document.createElement('img');
+                thumbnail.src = img.src;
+                thumbnail.alt = `Thumbnail ${index + 1}`;
+                thumbnail.classList.add('thumbnail');
+                if (index === currentIndex) {
+                    thumbnail.classList.add('active');
+                }
+                
+                thumbnail.addEventListener('click', () => {
+                    showSlide(index);
+                });
+                
+                thumbnailContainer.appendChild(thumbnail);
+            });
+        }
+        
+        // Show specific slide
+        function showSlide(index) {
+            if (index < 0) {
+                currentIndex = slides.length - 1;
+            } else if (index >= slides.length) {
+                currentIndex = 0;
+            } else {
+                currentIndex = index;
+            }
+            
+            carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+            
+            // Update active dot
+            document.querySelectorAll('.dot').forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentIndex);
+            });
+            
+            // Update active thumbnail
+            document.querySelectorAll('.thumbnail').forEach((thumb, i) => {
+                thumb.classList.toggle('active', i === currentIndex);
+            });
+        }
+        
+        // Event listeners for carousel controls
+        prevBtn.addEventListener('click', () => {
+            showSlide(currentIndex - 1);
+        });
+        
+        nextBtn.addEventListener('click', () => {
+            showSlide(currentIndex + 1);
+        });
+        
+        // Add keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                showSlide(currentIndex - 1);
+            } else if (e.key === 'ArrowRight') {
+                showSlide(currentIndex + 1);
+            }
+        });
+        
+        // Auto-advance carousel (optional)
+        let autoSlideInterval;
+        
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(() => {
+                showSlide(currentIndex + 1);
+            }, 5000); // Change slide every 5 seconds
+        }
+        
+        function stopAutoSlide() {
+            clearInterval(autoSlideInterval);
+        }
+        
+        // Pause auto-slide when hovering over carousel
+        carousel.addEventListener('mouseenter', stopAutoSlide);
+        carousel.addEventListener('mouseleave', startAutoSlide);
+        
+        // Initialize carousel on load
+        window.addEventListener('load', () => {
+            initCarousel();
+            startAutoSlide();
+        });
+    </script>
+</body>
+</html>
